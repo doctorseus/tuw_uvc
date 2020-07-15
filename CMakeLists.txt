@@ -8,7 +8,7 @@ find_package(catkin REQUIRED COMPONENTS cv_bridge roscpp rospy dynamic_reconfigu
 
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS thread signals program_options)
-
+find_package(SDL2 REQUIRED)
 
 
 find_package(OpenCV REQUIRED)
@@ -103,7 +103,7 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(include
   ${catkin_INCLUDE_DIRS}
-  /usr/include/SDL
+  ${SDL2_INCLUDE_DIRS}
   ./
   )
 
@@ -113,7 +113,7 @@ add_library(tuw_uvc
   src/luvcview/utils.c
   src/luvcview/v4l2uvc.c
 )
-target_link_libraries(tuw_uvc m SDL v4l2)
+target_link_libraries(tuw_uvc m ${SDL2_LIBRARIES} v4l2)
 
 add_library(tuw_uvc_ros
   src/tuw_uvc/uvc.cpp 
