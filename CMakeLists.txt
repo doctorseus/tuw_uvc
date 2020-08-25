@@ -7,7 +7,7 @@ project(tuw_uvc)
 find_package(catkin REQUIRED COMPONENTS cv_bridge roscpp rospy dynamic_reconfigure image_transport camera_info_manager message_generation)
 
 ## System dependencies are found with CMake's conventions
-find_package(Boost REQUIRED COMPONENTS thread signals program_options)
+find_package(Boost REQUIRED COMPONENTS thread program_options)
 find_package(SDL2 REQUIRED)
 
 
