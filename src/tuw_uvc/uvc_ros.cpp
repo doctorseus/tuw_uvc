@@ -270,14 +270,14 @@ void V4RCamNode::showCameraImage()
             Lock myLock(mutexImage_);
 	    if(!camera_freeze_){
 	      Pyuv422tobgr24(pVideoIn_->framebuffer, img.data, width_, height_);
-	      cv::putText(img, ss.str(), cv::Point(10, 15), cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar::all(0), 1, CV_AA);
+	      cv::putText(img, ss.str(), cv::Point(10, 15), cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar::all(0), 1, cv::LINE_AA);
 	    }
             cv::imshow(window_name, img);
         }
         key =  cv::waitKey(50);
     } while((key == -1) && show_camera_image_ && showCameraImageThreadActive_);
     
-    cv::putText(img, "OFFLINE", cv::Point(img.cols/4, img.rows/4), cv::FONT_HERSHEY_PLAIN, 5, cv::Scalar::all(0), 3, CV_AA);
+    cv::putText(img, "OFFLINE", cv::Point(img.cols/4, img.rows/4), cv::FONT_HERSHEY_PLAIN, 5, cv::Scalar::all(0), 3, cv::LINE_AA);
     cv::imshow(window_name, img);
     cv::waitKey(50);
     cv::destroyWindow(window_name);
